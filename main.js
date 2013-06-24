@@ -137,7 +137,7 @@ var APP = (function () {
 // initialise Facebook API
 window.fbAsyncInit = function() {
     FB.init({
-        appId      : '497899636895210', // App ID
+        appId      : '283647195114568', // App ID
         status     : true, // check login status
         cookie     : true // enable cookies to allow the server to access the session
     });
