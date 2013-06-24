@@ -142,7 +142,7 @@ window.fbAsyncInit = function() {
         cookie     : true // enable cookies to allow the server to access the session
     });
 
-    FB.Event.subscribe('auth.statusChange', CHT.init);
+    FB.Event.subscribe('auth.statusChange', APP.init);
 };
 
 $("#btn-login").click(function () {
