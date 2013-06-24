@@ -144,3 +144,11 @@ window.fbAsyncInit = function() {
 
     FB.Event.subscribe('auth.statusChange', CHT.init);
 };
+
+$("#btn-login").click(function () {
+    APP.login();
+});
+
+$("#btn-logout").click(function () {
+    APP.logout();
+});
