@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Chat</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+    <header>
+        <button id="btn-login" onClick="login()" style="float:right">Login</button>
+        <button id="btn-logout" onClick="logout()" style="display:none;float:right">Logout</button>
+        <input id="input-username" type="text" placeholder="Select a friendname..." value="/me/">
+        <button id="load-user" type="submit" onclick="APP.loadPhotos()">Load</button>
+    </header>
+
+    <div id="skrollr-body">
+        <div id="chat-content">
+
+        </div>
+    </div>
+
+<script id="topic-wrapper" type="text/x-handlebars-template">
+
+    {{#each photos.data }}
+    <section
+        class="topic"
+        id="topic-{{ id }}"
+        style="background-image: url({{ images/0/source }})"
+        data-edge-strategy="ease"
+        data-top-top="background-size: auto 200%; background-position: 100% 0%;"
+        data-top-200="background-size: auto 100%; background-position: 50% 20%;"
+        data-top-bottom="background-size: auto 100%; background-position: 0% 50%;">
+
+        <div class="overlay"></div>
+
+        <h1 class="topic-caption action-photos" data-user-id="{{ from/id }}">
+            <span class="topic-img chat-avatar" style="background-image: url(http://graph.facebook.com/{{ from/id }}/picture?type=normal)"></span>
+            <span class="topic-bd">
+                {{ name }}
+                <small class="chat-date">{{humane created_time }}</small>
+            </span>
+        </h1>
+
+        {{#each comments.data }}
+            <div class="chat-message action-photos" data-user-id="{{ from/id }}">
+                <div class="chat-sender">
+                    <span class="chat-avatar" style="background-image: url(http://graph.facebook.com/{{ from/id }}/picture?type=normal)"></span>
+                    <span class="chat-name">{{ from/name }}</span>
+                    <span class="chat-date">{{humane created_time }}</span>
+                </div>
+                <div class="chat-text">
+                    {{ message }}
+                </div>
+            </div>
+        {{/each}}
+    </section>
+    {{/each}}
+</script>
+
+<div id="fb-root"></div>
+
+<div id="page-loader" class="page-loader" style="display:none">
+    <img src="spinner-dark.gif" width="32" height="32">
+    <div class="page-loader-text">Loading&hellip;</div>
+</div>
+
+<!-- Initialize Facebook API -->
+<script id="facebook-jssdk" async="" src="//connect.facebook.net/en_US/all.js"></script>
+<script src="zepto.js"></script>
+<script src="handlebars.js"></script>
+<script src="humane.js"></script>
+<script src="skrollr.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
